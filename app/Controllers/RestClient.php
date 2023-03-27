@@ -2,8 +2,7 @@
 
 namespace App\Controllers;
 
-require_once APPPATH . 'Libraries\CAS.php';
-
+use App\Libraries\CAS.php;
 
 class RestClient extends BaseController
 {
@@ -18,9 +17,7 @@ class RestClient extends BaseController
 
     function index()
     {
-        $this->load->library('CAS');
-        $this->cas->force_auth();
-        $user = $this->cas->user();
+        $this->phpCAS::client();
         echo "Hello, $user->userlogin!";
     }
 }
